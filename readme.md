@@ -1,3 +1,6 @@
+# Webpage: 
+https://snehsuresh.github.io/activity-6-DV/activity.html
+
 # In-Class Activity: Manipulable View
 
 **Visualization Features:**
