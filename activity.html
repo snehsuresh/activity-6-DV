@@ -80,7 +80,7 @@
 
             function draw(binCount, minThreshold, maxThreshold) {
             const colors = d3.scaleLinear()
-                .domain([minValue, maxValue])
+                .domain(d3.range(minThreshold, maxThreshold, (maxThreshold - minThreshold) / binCount))
                 .range(["#0d1a50", "#3e5eba", "#2b83ba", "#abdda4", "#ffffbf", "#fdae61", "#d7191c"])
                 .interpolate(d3.interpolateHcl);
                 
