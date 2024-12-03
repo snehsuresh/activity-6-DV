@@ -79,14 +79,19 @@
 
 
             function draw(binCount, minThreshold, maxThreshold) {
+
+            // calculate step size based on actual data range and bin count
+            const stepSize = (maxValue - minValue) / binCount; // step size between thresholds using min and max values from data
+            const thresholds = d3.range(minThreshold, maxThreshold, stepSize); // thresholds range
+
             const colors = d3.scaleLinear()
-                .domain(d3.range(minThreshold, maxThreshold, (maxThreshold - minThreshold) / binCount))
+                .domain(d3.range(minValue, maxValue, (maxValue - minValue) / binCount)) // using step size calculated above
                 .range(["#0d1a50", "#3e5eba", "#2b83ba", "#abdda4", "#ffffbf", "#fdae61", "#d7191c"])
                 .interpolate(d3.interpolateHcl);
-                
+
                 let contours = d3.contours()
                     .size([m, n])
-                    .thresholds(d3.range(minThreshold, maxThreshold, (maxThreshold - minThreshold) / binCount))
+                    .thresholds(thresholds)
                     (values_density);
 
                 svg.append("g")
